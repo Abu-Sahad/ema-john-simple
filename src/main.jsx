@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -13,6 +12,8 @@ import Inventory from './component/Inventory/Inventory.jsx';
 import LogIn from './component/LogIn/LogIn.jsx';
 import cartProductLoader from './Loader/cartProductLoader.js';
 import CheckOut from './component/CheckOut/CheckOut.jsx';
+import Register from './component/Register/Register.jsx';
+import AuthProviders from './component/providers/AuthProviders.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,12 +35,16 @@ const router = createBrowserRouter([
 
       },
       {
-        path: 'log in',
+        path: 'login',
         element: <LogIn></LogIn>
       },
       {
+        path: 'register',
+        element: <Register></Register>
+      },
+      {
         path: 'checkout',
-        element:<CheckOut></CheckOut>
+        element: <CheckOut></CheckOut>
       }
     ]
   }
@@ -48,6 +53,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App /> */}
-    <RouterProvider router={router} />
+    <AuthProviders>
+      <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>,
 )
